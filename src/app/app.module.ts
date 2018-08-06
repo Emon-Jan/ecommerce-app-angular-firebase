@@ -1,3 +1,4 @@
+import { AuthService } from "./service/auth.service";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { MatButtonModule, MatSelectModule } from "@angular/material";
@@ -7,6 +8,7 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "./../environments/environment";
+import { AuthGuard } from "./service/auth-guard.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -50,7 +52,7 @@ import { LoginComponent } from "./login/login.component";
     AngularFireAuthModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

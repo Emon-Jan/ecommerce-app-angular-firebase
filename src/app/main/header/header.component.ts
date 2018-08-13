@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 
+import { User } from "./../../model/user.model";
 import { AuthService } from "./../../service/auth.service";
-import * as firebase from "firebase";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -11,13 +11,12 @@ import { Subscription } from "rxjs";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnDestroy {
-  user: firebase.User;
-  afStateSubsciption: Subscription;
-
+  guestUser: User;
+  authSubscription: Subscription;
   constructor(private authService: AuthService, private router: Router) {
-    this.afStateSubsciption = authService.authenticate().subscribe(res => {
-      this.user = res;
-    });
+    this.authSubscription = this.authService.eUser.subscribe(
+      user => (this.guestUser = user)
+    );
   }
 
   onLogout() {
@@ -25,7 +24,7 @@ export class HeaderComponent implements OnDestroy {
     this.router.navigate(["/home"]);
   }
 
-  ngOnDestroy(): void {
-    this.afStateSubsciption.unsubscribe();
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 }

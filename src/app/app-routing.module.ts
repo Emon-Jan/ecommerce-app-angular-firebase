@@ -1,5 +1,3 @@
-import { AuthGuard } from "./service/auth-guard.service";
-import { MyOrdersComponent } from "./main/my-orders/my-orders.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
@@ -8,11 +6,15 @@ import { ProductsComponent } from "./main/products/products.component";
 import { OrderSuccessComponent } from "./main/order-success/order-success.component";
 import { CheckOutComponent } from "./main/check-out/check-out.component";
 import { ShoppingCartComponent } from "./main/shopping-cart/shopping-cart.component";
+import { MyOrdersComponent } from "./main/my-orders/my-orders.component";
 
 import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
 import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
 
 import { LoginComponent } from "./login/login.component";
+
+import { AdminGuard } from "./service/admin-guard.service";
+import { AuthGuard } from "./service/auth-guard.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -30,12 +32,12 @@ const routes: Routes = [
   {
     path: "admin-products",
     component: AdminProductsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: "admin-orders",
     component: AdminOrdersComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminGuard]
   }
 ];
 

@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-warning fixed-top">
-  <a class="navbar-brand" routerLink="/" style="font-family: Righteous; color: white">e-commerce</a>
+  <a class="navbar-brand" routerLink="/" style="font-family: Righteous; color: white">
+    <i class="material-icons" style="vertical-align: middle;">home</i>
+    e-commerce
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,14 +11,26 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/shopping-cart">Shopping Cart</a>
+        <a class="nav-link" routerLink="/shopping-cart">
+          <i class="material-icons" style="vertical-align: middle;">
+            shopping_cart
+          </i>
+          Shopping Cart
+        </a>
       </li>
       <li class="nav-item" *ngIf="!guestUser">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/login">
+          <i class="material-icons" style="vertical-align: middle;">input</i>
+          Login
+        </a>
       </li>
       <li class="nav-item dropdown float-right" *ngIf="guestUser">
         <a class="nav-link dropdown-toggle" style="cursor: pointer;" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">{{ guestUser.userName }}</a>
+          aria-expanded="false">
+          <i class="material-icons" style="vertical-align: middle;">
+            account_circle
+          </i>
+          {{ guestUser.userName }}</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/myorders">My Orders</a>
           <ng-container *ngIf="guestUser.isAdmin">

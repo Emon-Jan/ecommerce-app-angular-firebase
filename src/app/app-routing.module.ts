@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { HomeComponent } from "./main/home/home.component";
 import { ProductsComponent } from "./main/products/products.component";
+import { ProductFormComponent } from "./admin/admin-products/product-form/product-form.component";
 import { OrderSuccessComponent } from "./main/order-success/order-success.component";
 import { CheckOutComponent } from "./main/check-out/check-out.component";
 import { ShoppingCartComponent } from "./main/shopping-cart/shopping-cart.component";
@@ -28,6 +29,16 @@ const routes: Routes = [
     path: "order-success",
     component: OrderSuccessComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "admin-products/new",
+    component: ProductFormComponent,
+    canActivate: [AuthGuard, AdminGuard]
+  },
+  {
+    path: "admin-products/:id",
+    component: ProductFormComponent,
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: "admin-products",

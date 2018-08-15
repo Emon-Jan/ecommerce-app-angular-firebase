@@ -1,3 +1,38 @@
-<p>
-  admin-products works!
-</p>
+<div class="row">
+    <div class="col-md-8">
+        <a class="btn" mat-raised-button color="primary" routerLink="/admin-products/new"><i class="material-icons">
+                add
+            </i>New Product</a>
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-md-8">
+        <input #q (keyup)="filter(q.value)" type="text" class="form-control" placeholder="Search...">
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">
+                        <i class="material-icons">
+                            edit
+                        </i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of filteredProducts">
+                    <td>{{ p.payload.val().title }}</td>
+                    <td>{{ p.payload.val().price | currency:'BDT':'symbol-narrow' }}</td>
+                    <td>
+                        <a mat-button class="btn" [routerLink]="['/admin-products/', p.key]">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

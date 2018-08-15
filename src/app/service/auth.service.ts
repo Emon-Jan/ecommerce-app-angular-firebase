@@ -1,11 +1,13 @@
-import { User } from "./../model/user.model";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { auth } from "firebase";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Observable } from "rxjs";
+import "rxjs/Rx";
+
+import { auth } from "firebase";
 import * as firebase from "firebase";
+import { User } from "./../model/user.model";
 import { UserService } from "./user.service";
 
 @Injectable()

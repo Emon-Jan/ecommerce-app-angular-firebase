@@ -7,6 +7,7 @@ import {
 
 import { AuthService } from "./auth.service";
 import { Observable } from "rxjs";
+import "rxjs/add/operator/map";
 
 @Injectable()
 export class AdminGuard implements CanActivate {

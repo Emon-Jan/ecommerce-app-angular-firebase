@@ -1,4 +1,3 @@
-import { ProductService } from "./service/product.service";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -14,12 +13,14 @@ import { CustomFormsModule } from "ng2-validation";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
+import { DataTableModule } from "ngx-datatable-bootstrap4";
 import { environment } from "./../environments/environment";
 
 import { AuthGuard } from "./service/auth-guard.service";
 import { AdminGuard } from "./service/admin-guard.service";
 import { AuthService } from "./service/auth.service";
 import { UserService } from "./service/user.service";
+import { ProductService } from "./service/product.service";
 import { CategoryService } from "./service/category.service";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -68,6 +69,7 @@ import { LoginComponent } from "./login/login.component";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    DataTableModule,
     AppRoutingModule
   ],
   providers: [

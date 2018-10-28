@@ -5,7 +5,15 @@ import {
   MatButtonModule,
   MatCardModule,
   MatIconModule,
-  MatSelectModule
+  MatChipsModule,
+  MatListModule,
+  MatDividerModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatInputModule
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -13,7 +21,6 @@ import { CustomFormsModule } from "ng2-validation";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
-import { DataTableModule } from "ngx-datatable-bootstrap4";
 import { environment } from "./../environments/environment";
 
 import { AuthGuard } from "./service/auth-guard.service";
@@ -21,6 +28,7 @@ import { AdminGuard } from "./service/admin-guard.service";
 import { AuthService } from "./service/auth.service";
 import { UserService } from "./service/user.service";
 import { ProductService } from "./service/product.service";
+import { CartService } from "./service/cart.service";
 import { CategoryService } from "./service/category.service";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -40,6 +48,7 @@ import { MyOrdersComponent } from "./main/my-orders/my-orders.component";
 import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
 import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
 import { LoginComponent } from "./login/login.component";
+import { ProductCardComponent } from "./main/product-card/product-card.component";
 
 @NgModule({
   declarations: [
@@ -55,7 +64,8 @@ import { LoginComponent } from "./login/login.component";
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -64,12 +74,19 @@ import { LoginComponent } from "./login/login.component";
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
+    MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatDividerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatSelectModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    DataTableModule,
     AppRoutingModule
   ],
   providers: [
@@ -78,7 +95,8 @@ import { LoginComponent } from "./login/login.component";
     AdminGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

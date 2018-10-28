@@ -18,7 +18,7 @@ import { AdminGuard } from "./service/admin-guard.service";
 import { AuthGuard } from "./service/auth-guard.service";
 
 const routes: Routes = [
-  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "", redirectTo: "/products", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
   { path: "shopping-cart", component: ShoppingCartComponent },

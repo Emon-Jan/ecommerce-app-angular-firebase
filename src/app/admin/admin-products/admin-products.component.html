@@ -1,44 +1,70 @@
 <div class="row">
     <div class="col-md-8">
-        <a class="btn" mat-raised-button color="primary" routerLink="/admin-products/new"><i class="material-icons">
-                add
-            </i>New Product</a>
+        <a class="btn" mat-raised-button color="primary" routerLink="/admin-products/new">
+            <i class="material-icons"> add </i>
+            New Product
+        </a>
     </div>
 </div>
 <div class="row pt-3">
     <div class="col-md-10">
-        <input #q (keyup)="filter(q.value)" type="text" class="form-control" placeholder="Search...">
-    </div>
-</div>
-<div class="row pt-3">
-    <div class="col-md-10">
-        <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)" [limit]="5">
-            <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true">
-                <ng-template #cellTemplate let-item="item">
-                    {{ item.payload.val().title }}
-                </ng-template>
-            </data-table-column>
+        <div class="example-header">
+            <mat-form-field>
+                <input matInput #q (keyup)="filter(q.value)" placeholder="Filter">
+            </mat-form-field>
 
-            <data-table-column [property]="'price'" [header]="'Price'" [sortable]="true" [resizable]="true">
-                <ng-template #cellTemplate let-item="item">
-                    {{ item.payload.val().price | currency:'BDT':'symbol-narrow' }}
-                </ng-template>
-            </data-table-column>
+            <div class="example-container mat-elevation-z8">
+                <mat-table #table [dataSource]="dataSource" matSort>
 
-            <data-table-column [property]="'key'">
-                <ng-template #cellTemplate let-item="item">
-                    <a mat-button class="btn" [routerLink]="['/admin-products/', item.key]">Edit</a>
-                </ng-template>
-            </data-table-column>
+                    <!-- Image Column -->
+                    <ng-container matColumnDef="imageUrl">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> #
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <div [style.backgroundImage]="'url(' + row.payload.val().imageUrl + ')'" class="thumbnail"></div>
+                        </mat-cell>
+                    </ng-container>
 
-        </data-table>
+                    <!-- Title Column -->
+                    <ng-container matColumnDef="title">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Title
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.payload.val().title}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Price Column -->
+                    <ng-container matColumnDef="price">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Price
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.payload.val().price | currency:'BDT':'symbol-narrow'}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Key Column -->
+                    <ng-container matColumnDef="key">
+                        <mat-header-cell *matHeaderCellDef>
+                            <!-- <i class="material-icons"> edit </i> -->
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <a mat-button class="btn" [routerLink]="['/admin-products/', row.key]">Edit</a>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    </mat-row>
+                </mat-table>
+
+                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Title</th>
+            <scope="col">Title</th>
             <th scope="col">Price</th>
             <th scope="col">
                 <i class="material-icons">

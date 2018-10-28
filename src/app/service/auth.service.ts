@@ -24,7 +24,7 @@ export class AuthService {
 
   logIn() {
     let returnUrl =
-      this.route.snapshot.queryParamMap.get("returnUrl") || "/home";
+      this.route.snapshot.queryParamMap.get("returnUrl") || "/products";
     localStorage.setItem("returnUrl", returnUrl);
 
     this.afAuth.auth
@@ -40,6 +40,7 @@ export class AuthService {
 
   logOut() {
     this.afAuth.auth.signOut();
+    this.router.navigate(["/products"]);
   }
 
   get eUser(): Observable<User> {

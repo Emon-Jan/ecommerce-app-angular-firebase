@@ -49,21 +49,16 @@
     </mat-card>
   </div>
   <div class="col-md-6 pt-1">
-    <!-- <div *ngIf="product.title || product.price || product.imageUrl" class="card" style="width: 20rem;">
-      <img class="card-img-top img-fluid" style="height: auto" [src]="imageUrl.value" *ngIf="product.imageUrl">
-      <div class="card-body">
-        <h4 class="card-title">{{ product.title }}</h4>
-        <p class="card-text">{{ product.price | currency:'BDT':'symbol-narrow' }}</p>
-      </div>
-    </div> -->
-    <mat-card *ngIf="product.title || product.price || product.imageUrl" style="width: 18rem;">
-      <mat-card-header>
+    <mat-card *ngIf="product.title || product.price || product.imageUrl" style="width: 20rem;">
+      <img mat-card-image class="cover rounded-top mb-0" [src]="imageUrl.value" *ngIf="product.imageUrl">
+      <mat-card-footer class="card-footer">
         <mat-card-title>{{ product.title }}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-lg-image class="cover" [src]="imageUrl.value" *ngIf="product.imageUrl">
-      <mat-card-actions>
-        <button mat-button>{{ product.price | currency:'BDT':'symbol-narrow' }}</button>
-      </mat-card-actions>
+        <mat-chip-list>
+          <mat-chip>
+            {{ product.price | currency:'BDT':'symbol-narrow' }}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-footer>
     </mat-card>
   </div>
 </div>

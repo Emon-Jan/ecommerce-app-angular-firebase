@@ -11,7 +11,7 @@ export class UserService {
 
   saveUser(user: firebase.User) {
     this.fireDb
-      .object("/user/" + user.uid)
+      .object("/users/" + user.uid)
       .update({
         userName: user.displayName,
         userEmail: user.email
@@ -22,7 +22,7 @@ export class UserService {
 
   getUser(uid: String): Observable<User> {
     let obj: Observable<any>;
-    obj = this.fireDb.object("/user/" + uid).valueChanges();
+    obj = this.fireDb.object("/users/" + uid).valueChanges();
     return obj;
   }
 }

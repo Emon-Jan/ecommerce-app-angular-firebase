@@ -9,12 +9,9 @@ import { Product } from "./../../model/product.model";
   styleUrls: ["./product-card.component.css"]
 })
 export class ProductCardComponent implements OnInit {
-  @Input("item")
-  product: Product;
-  @Input("show-actions")
-  showActions = true;
-  @Input("shopping-cart")
-  shoppingCart;
+  @Input("item") product: Product;
+  @Input("show-actions") showActions = true;
+  @Input("shopping-cart") shoppingCart;
 
   constructor(private cartService: CartService) {}
 

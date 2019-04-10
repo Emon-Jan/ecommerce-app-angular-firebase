@@ -1,6 +1,7 @@
 import { Router, ActivatedRoute } from "@angular/router";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 
+// tslint:disable-next-line:import-blacklist
 import { Subscription } from "rxjs";
 import "rxjs/add/operator/take";
 
@@ -14,7 +15,7 @@ import { CategoryService } from "./../../../service/category.service";
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   id;
-  isDelete: boolean = false;
+  isDelete = false;
   product = {};
   categories = [];
   cateSubscription: Subscription;

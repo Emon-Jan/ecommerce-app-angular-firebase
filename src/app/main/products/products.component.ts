@@ -3,6 +3,7 @@ import { Product } from "./../../model/product.model";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 
+// tslint:disable-next-line:import-blacklist
 import { Subscription } from "rxjs";
 import { CategoryService } from "./../../service/category.service";
 import { ProductService } from "./../../service/product.service";
@@ -13,6 +14,7 @@ import { ProductService } from "./../../service/product.service";
   styleUrls: ["./products.component.css"]
 })
 export class ProductsComponent implements OnInit, OnDestroy {
+  // tslint:disable-next-line:no-inferrable-types
   category: string = "";
   cart;
   products: any[];

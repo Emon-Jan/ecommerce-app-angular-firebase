@@ -33,7 +33,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   filter(query: string) {
-    let filteredProducts = query
+    const filteredProducts = query
       ? this.products.filter(items =>
           items.payload
             .val()

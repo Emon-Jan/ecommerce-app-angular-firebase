@@ -1,22 +1,41 @@
-import { Component, OnDestroy } from "@angular/core";
+import { ShoppingCart } from "./../../model/shopping-cart";
+import { ShoppingCartItem } from "./../../model/shoppingcart-item";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { User } from "./../../model/user.model";
 import { AuthService } from "./../../service/auth.service";
-import { Subscription } from "rxjs";
+import { CartService } from "./../../service/cart.service";
+import { Subscription, Observable } from "rxjs";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.css"]
 })
-export class HeaderComponent implements OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
   guestUser: User;
   authSubscription: Subscription;
-  constructor(private authService: AuthService, private router: Router) {
+  itemCount: number;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private shoppingCartService: CartService
+  ) {}
+
+  async ngOnInit() {
     this.authSubscription = this.authService.eUser.subscribe(
       user => (this.guestUser = user)
     );
+    const cart = await this.shoppingCartService.getCart();
+    cart.subscribe((cartRes: ShoppingCart) => {
+      this.itemCount = 0;
+      // tslint:disable-next-line: forin
+      for (const prodId in cartRes.items) {
+        this.itemCount += cartRes.items[prodId].quantity;
+      }
+    });
   }
 
   onLogout() {

@@ -1,9 +1,11 @@
+import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
 import "rxjs/add/operator/take";
-import { AngularFireDatabase } from "angularfire2/database";
+import { AngularFireDatabase, AngularFireObject } from "angularfire2/database";
 
 import { Product } from "./../model/product.model";
+import { ShoppingCartItem } from "./../model/shoppingcart-item";
 
 @Injectable()
 export class CartService {
@@ -16,7 +18,7 @@ export class CartService {
   }
 
   async getCart() {
-    let cartId = await this.getOrCreateId();
+    const cartId = await this.getOrCreateId();
     return this.afdb.object("/shopping-carts/" + cartId).valueChanges();
   }
 
@@ -27,10 +29,10 @@ export class CartService {
   }
 
   private async getOrCreateId(): Promise<string> {
-    let cartId = localStorage.getItem("cartId");
+    const cartId = localStorage.getItem("cartId");
     if (cartId) return cartId;
 
-    let result = await this.create();
+    const result = await this.create();
     localStorage.setItem("cartId", result.key);
     return result.key;
   }
@@ -44,9 +46,9 @@ export class CartService {
   }
 
   private async updateCart(product, change: number) {
-    let cartId = await this.getOrCreateId();
+    const cartId = await this.getOrCreateId();
 
-    let item = this.getItem(cartId, product.key).valueChanges();
+    const item = this.getItem(cartId, product.key).valueChanges();
     item.take(1).subscribe((res: Product) => {
       if (res) {
         this.getItem(cartId, product.key).update({

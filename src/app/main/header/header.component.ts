@@ -1,5 +1,4 @@
 import { ShoppingCart } from "./../../model/shopping-cart";
-import { ShoppingCartItem } from "./../../model/shoppingcart-item";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -17,6 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   guestUser: User;
   authSubscription: Subscription;
   itemCount: number;
+  cart: ShoppingCart;
 
   constructor(
     private authService: AuthService,
@@ -28,13 +28,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.eUser.subscribe(
       user => (this.guestUser = user)
     );
-    const cart = await this.shoppingCartService.getCart();
-    cart.subscribe((cartRes: ShoppingCart) => {
-      this.itemCount = 0;
-      // tslint:disable-next-line: forin
-      for (const prodId in cartRes.items) {
-        this.itemCount += cartRes.items[prodId].quantity;
-      }
+    const cart$ = await this.shoppingCartService.getCart();
+    cart$.subscribe(res => {
+      this.cart = res;
     });
   }
 

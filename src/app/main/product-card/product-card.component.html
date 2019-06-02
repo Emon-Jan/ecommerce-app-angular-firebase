@@ -10,17 +10,17 @@
     <div class="clearfix"></div>
   </mat-card-content>
   <mat-card-footer *ngIf="showActions" class="card-footer">
-    <button *ngIf="getQuantity() === 0; else elseTemplate" class="btn btn-block btn-secondary" style="font-family: Roboto" (click)="addToCart()">Add
+    <button *ngIf="getQuantity() === 0; else elseTemplate" class="btn btn-block btn-light" style="font-family: Roboto" (click)="addToCart()">Add
       To Cart
     </button>
     <ng-template #elseTemplate>
       <div class="row no-gutters">
         <div class="col-md-2">
-          <button class="btn btn-block btn-secondary" (click)="addToCart()">+</button>
+          <button class="btn btn-block btn-success" (click)="addToCart()">+</button>
         </div>
         <div class="col text-center pt-2">{{ getQuantity() }} item(s) in cart</div>
         <div class="col-md-2">
-          <button class="btn btn-block btn-secondary" (click)="removeFromCart()">-</button>
+          <button class="btn btn-block btn-danger" (click)="removeFromCart()">-</button>
         </div>
       </div>
     </ng-template>

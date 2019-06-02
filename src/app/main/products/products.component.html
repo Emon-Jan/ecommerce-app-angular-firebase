@@ -20,12 +20,11 @@
   <div class="col-md-9">
     <div class="row">
       <ng-container *ngFor="let product of filteredProducts; let i=index">
-        <div class="col-md-6 col-sm-10">
+        <div class="col-md-4 col-sm-4">
           <app-product-card [item]="product" [shopping-cart]="cart"></app-product-card>
           <div *ngIf="(i+1) % 2 === 0" class="w-100"></div>
         </div>
       </ng-container>
-      <div class="col-md-6"></div>
     </div>
   </div>
 </div>

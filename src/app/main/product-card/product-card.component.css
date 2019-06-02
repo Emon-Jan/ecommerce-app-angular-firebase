@@ -5,3 +5,19 @@
 .card-footer {
   padding: 0;
 }
+
+/* .img {
+  position: relative;
+  float: left;
+  width:  100px;
+  height: 100px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+
+mat-card img{
+  object-fit: cover; //this makes de image in src fit to the size of specified below
+  width: 100%; // Here you can use wherever you want to specify the width and also the height of the <img>
+  height: 80%;
+} */

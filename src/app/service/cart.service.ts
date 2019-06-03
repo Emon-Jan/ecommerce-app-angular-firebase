@@ -4,6 +4,8 @@ import { AngularFireDatabase } from "angularfire2/database";
 
 import { Product } from "./../model/product.model";
 import { ShoppingCart } from "../model/shopping-cart";
+import { ShoppingCartItem } from "../model/shoppingcart-item";
+
 
 import { Observable } from "rxjs";
 import "rxjs/add/operator/take";
@@ -23,7 +25,7 @@ export class CartService {
     const cartId = await this.getOrCreateId();
     return this.afdb.object("/shopping-carts/" + cartId)
     .valueChanges()
-    .map((res: ShoppingCart) => new ShoppingCart(res.items));
+    .map((x: any) => new ShoppingCart(x.items));
   }
 
   private getItem(cartId: string, productId: string) {

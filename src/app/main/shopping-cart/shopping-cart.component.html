@@ -1,23 +1,27 @@
 <h1>
   Shopping Cart
 </h1>
-<h3>
+<p>
   Your shopping cart has {{ cart.totalItemsCount }} items
-</h3>
-
-<table class="table">
+</p>
+<table class="table" *ngIf="cart.totalItemsCount">
   <thead>
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Quantity</th>
-      <th scope="col"></th>
+      <th scope="col">Price</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let prodId of cart.productIds; let i=index">
-      <td>{{cart.items[prodId].product.title}}</td>
-      <td>{{cart.items[prodId].quantity}}</td>
-      <td>@mdo</td>
+    <tr *ngFor="let item of cart.items">
+      <td>{{item.product.title}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.totalPrice | currency:'BDT':'symbol-narrow'}}</td>
     </tr>
   </tbody>
+  <tr>
+    <th>Total</th>
+    <th></th>
+    <th>{{cart.totalItemsPrice | currency:'BDT':'symbol-narrow'}}</th>
+  </tr>
 </table>

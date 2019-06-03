@@ -1,9 +1,9 @@
 <mat-card class="custom">
   <img mat-card-image class="cover rounded-top mb-0" [src]="product.payload.val().imageUrl" *ngIf="product.payload.val().imageUrl">
   <mat-card-content class="mt-3">
-    <h5 class="card-title float-left" style="font-family: Roboto">{{ product.payload.val().title | slice:0:20 }}</h5>
+    <h6 class="card-title float-left" style="font-family: Roboto">{{ product.payload.val().title | slice:0:20 }}</h6>
     <mat-chip-list class="float-right">
-      <mat-chip selected color="warn">
+      <mat-chip>
         {{ product.payload.val().price | currency:'BDT':'symbol-narrow' }}
       </mat-chip>
     </mat-chip-list>
@@ -16,11 +16,11 @@
     <ng-template #elseTemplate>
       <div class="row no-gutters">
         <div class="col-md-2">
-          <button class="btn btn-block btn-success" (click)="addToCart()">+</button>
+          <button class="btn btn-block btn-dark" (click)="addToCart()">+</button>
         </div>
-        <div class="col text-center pt-2">{{ getQuantity() }} item(s) in cart</div>
+        <div class="col text-center pt-2" style="font-family: Roboto">{{ getQuantity() }} item(s) in cart</div>
         <div class="col-md-2">
-          <button class="btn btn-block btn-danger" (click)="removeFromCart()">-</button>
+          <button class="btn btn-block btn-dark" (click)="removeFromCart()">-</button>
         </div>
       </div>
     </ng-template>

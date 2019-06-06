@@ -2,7 +2,20 @@
   Shopping Cart
 </h1>
 <ng-container *ngIf="cart$ | async as cart">
-  <p>Your shopping cart has {{ cart.totalItemsCount }} items</p>
+  <div class="row">
+    <div class="col-md-6 m-0">
+      <p>Your shopping cart has {{ cart.totalItemsCount }} items</p>
+    </div>
+    <div class="col-md-6" style="text-align: right;">
+      <button
+        class="btn btn-outline-danger m-3 btn-sm"
+        *ngIf="cart.totalItemsCount"
+        (click)="removeCartItems()"
+      >
+        Clear Cart
+      </button>
+    </div>
+  </div>
   <table class="table" *ngIf="cart.totalItemsCount">
     <thead>
       <tr>
@@ -23,10 +36,12 @@
         <td>{{ item.totalPrice | currency: "BDT":"symbol-narrow" }}</td>
       </tr>
     </tbody>
-    <tr>
-      <th>Total</th>
-      <th></th>
-      <th>{{ cart.totalItemsPrice | currency: "BDT":"symbol-narrow" }}</th>
-    </tr>
+    <tfoot>
+      <tr>
+        <th>Total</th>
+        <th></th>
+        <th>{{ cart.totalItemsPrice | currency: "BDT":"symbol-narrow" }}</th>
+      </tr>
+    </tfoot>
   </table>
 </ng-container>

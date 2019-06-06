@@ -7,13 +7,8 @@ export class ShoppingCart {
   constructor(public itemsMap: { [productId: string]: ShoppingCartItem }) {
     this.itemsMap = this.itemsMap || {};
     for (const productId in itemsMap) {
-      let item = this.itemsMap[productId];
-      let x = new ShoppingCartItem();
-      Object.assign(x, item);
-      x.key = productId;
-      if (item.quantity !== 0) {
-        this.items.push(x);
-      }
+      const item: ShoppingCartItem = this.itemsMap[productId];
+      this.items.push(new ShoppingCartItem({ ...item, key: productId }));
     }
   }
 

@@ -7,7 +7,10 @@ export class ShoppingCartItem {
   quantity: number;
   key: string;
 
-  // constructor(public product: Product, public quantity: number) {}
+  constructor(attr?: Partial<ShoppingCartItem>) {
+    // passing one object attribute to other using constructor
+    Object.assign(this, attr);
+  }
 
   get totalPrice() {
     return this.price * this.quantity;

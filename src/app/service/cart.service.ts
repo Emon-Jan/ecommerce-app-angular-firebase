@@ -54,22 +54,37 @@ export class CartService {
     this.updateCart(product, -1);
   }
 
+  async clearItems() {
+    const cartId = await this.getOrCreateId();
+    this.afdb.object("/shopping-carts/" + cartId + "/items").remove();
+  }
+
   private async updateCart(product, change: number) {
     const cartId = await this.getOrCreateId();
-    const item = this.getItem(cartId, product.key).valueChanges();
-    item.take(1).subscribe((res: Product) => {
-      if (res) {
-        this.getItem(cartId, product.key).update({
-          quantity: res.quantity + change
-        });
-      } else {
-        this.getItem(cartId, product.key).set({
-          title: product.payload.val().title,
-          imageUrl: product.payload.val().imageUrl,
-          price: product.payload.val().price,
-          quantity: 1
-        });
-      }
-    });
+    const item = this.getItem(cartId, product.key);
+    item
+      .valueChanges()
+      .take(1)
+      .subscribe((resItem: Product) => {
+        if (resItem === null) {
+          item.update({
+            title: product.payload.val().title,
+            imageUrl: product.payload.val().imageUrl,
+            price: product.payload.val().price,
+            quantity: 1
+          });
+        } else {
+          const quantity = (resItem.quantity || 0) + change;
+          if (quantity === 0) item.remove();
+          else {
+            item.update({
+              title: product.payload.val().title,
+              imageUrl: product.payload.val().imageUrl,
+              price: product.payload.val().price,
+              quantity: quantity
+            });
+          }
+        }
+      });
   }
 }

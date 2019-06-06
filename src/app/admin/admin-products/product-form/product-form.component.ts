@@ -16,8 +16,8 @@ import { CategoryService } from "./../../../service/category.service";
 export class ProductFormComponent implements OnInit, OnDestroy {
   id;
   isDelete = false;
-  product = {};
-  categories = [];
+  product:any = {};
+  categories:any = [];
   cateSubscription: Subscription;
 
   constructor(

@@ -4,8 +4,6 @@ import { AngularFireDatabase } from "angularfire2/database";
 
 import { Product } from "./../model/product.model";
 import { ShoppingCart } from "../model/shopping-cart";
-import { ShoppingCartItem } from "../model/shoppingcart-item";
-
 
 import { Observable } from "rxjs";
 import "rxjs/add/operator/take";
@@ -23,9 +21,14 @@ export class CartService {
 
   async getCart(): Promise<Observable<ShoppingCart>> {
     const cartId = await this.getOrCreateId();
-    return this.afdb.object("/shopping-carts/" + cartId)
-    .valueChanges()
-    .map((x: any) => new ShoppingCart(x.items));
+    return this.afdb
+      .object("/shopping-carts/" + cartId)
+      .valueChanges()
+      .map((x: any) => {
+        if (x === null) {
+          return new ShoppingCart({});
+        } else return new ShoppingCart(x.items);
+      });
   }
 
   private getItem(cartId: string, productId: string) {
@@ -53,7 +56,6 @@ export class CartService {
 
   private async updateCart(product, change: number) {
     const cartId = await this.getOrCreateId();
-
     const item = this.getItem(cartId, product.key).valueChanges();
     item.take(1).subscribe((res: Product) => {
       if (res) {
@@ -62,7 +64,9 @@ export class CartService {
         });
       } else {
         this.getItem(cartId, product.key).set({
-          product: product.payload.val(),
+          title: product.payload.val().title,
+          imageUrl: product.payload.val().imageUrl,
+          price: product.payload.val().price,
           quantity: 1
         });
       }

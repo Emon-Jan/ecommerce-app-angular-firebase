@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
+
 import {
   MatButtonModule,
   MatCardModule,
@@ -49,6 +51,7 @@ import { AdminProductsComponent } from "./admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
 import { LoginComponent } from "./login/login.component";
 import { ProductCardComponent } from "./main/product-card/product-card.component";
+import { ProductQuantityComponent } from "./main/product-quantity/product-quantity.component";
 
 @NgModule({
   declarations: [
@@ -65,10 +68,12 @@ import { ProductCardComponent } from "./main/product-card/product-card.component
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     CustomFormsModule,
     BrowserAnimationsModule,

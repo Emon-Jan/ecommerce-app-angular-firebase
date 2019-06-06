@@ -1,27 +1,32 @@
 <h1>
   Shopping Cart
 </h1>
-<p>
-  Your shopping cart has {{ cart.totalItemsCount }} items
-</p>
-<table class="table" *ngIf="cart.totalItemsCount">
-  <thead>
+<ng-container *ngIf="cart$ | async as cart">
+  <p>Your shopping cart has {{ cart.totalItemsCount }} items</p>
+  <table class="table" *ngIf="cart.totalItemsCount">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart.items">
+        <td>{{ item.title }}</td>
+        <td>
+          <app-product-quantity
+            [product]="item"
+            [shopping-cart]="cart"
+          ></app-product-quantity>
+        </td>
+        <td>{{ item.totalPrice | currency: "BDT":"symbol-narrow" }}</td>
+      </tr>
+    </tbody>
     <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
+      <th>Total</th>
+      <th></th>
+      <th>{{ cart.totalItemsPrice | currency: "BDT":"symbol-narrow" }}</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of cart.items">
-      <td>{{item.product.title}}</td>
-      <td>{{item.quantity}}</td>
-      <td>{{item.totalPrice | currency:'BDT':'symbol-narrow'}}</td>
-    </tr>
-  </tbody>
-  <tr>
-    <th>Total</th>
-    <th></th>
-    <th>{{cart.totalItemsPrice | currency:'BDT':'symbol-narrow'}}</th>
-  </tr>
-</table>
+  </table>
+</ng-container>

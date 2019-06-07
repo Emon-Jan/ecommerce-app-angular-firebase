@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-md-5">
     <mat-card class="example-card">
-      <form #f="ngForm" (ngSubmit)="checkOut(f.value)">
+      <form #f="ngForm" (ngSubmit)="checkOut()">
         <div class="form-group">
           <label for="fname">Full Name</label>
           <input
-            [(ngModel)]="fullname"
+            [(ngModel)]="shippingInfo.fullname"
             name="fname"
             #fname="ngModel"
             id="fname"
@@ -23,7 +23,7 @@
         <div class="form-group">
           <label for="address">Address</label>
           <input
-            [(ngModel)]="fulladdress"
+            [(ngModel)]="shippingInfo.fulladdress"
             name="address"
             #address="ngModel"
             id="address"
@@ -41,10 +41,11 @@
         <div class="form-group">
           <label for="phone">Phone</label>
           <input
-            [(ngModel)]="phonenum"
+            [(ngModel)]="shippingInfo.phonenum"
             name="phone"
             #phone="ngModel"
             id="phone"
+            type="tel"
             class="form-control"
             required
           />
@@ -52,11 +53,12 @@
             class="alert alert-danger"
             *ngIf="phone.touched && phone.invalid"
           >
-            Phone number is required.
+            Phone number is required
           </div>
         </div>
         <button
           mat-raised-button
+          [disabled]="!f.valid"
           type="submit"
           class="btn"
           style="color: white;background-color: rgb(71, 161, 202)"
@@ -68,15 +70,8 @@
   </div>
   <mat-divider [vertical]="true"> </mat-divider>
   <div class="col-md-5">
-    <mat-card>
-      <mat-card-footer class="card-footer">
-        <mat-card-title>{{ fullname }}</mat-card-title>
-        <mat-chip-list>
-          <mat-chip>
-            {{ fulladdress }}
-          </mat-chip>
-        </mat-chip-list>
-      </mat-card-footer>
-    </mat-card>
+    <app-shoppingcart-detail
+      [shopping-cart]="shoppingCart"
+    ></app-shoppingcart-detail>
   </div>
 </div>

@@ -32,6 +32,7 @@ import { UserService } from "./service/user.service";
 import { ProductService } from "./service/product.service";
 import { CartService } from "./service/cart.service";
 import { CategoryService } from "./service/category.service";
+import { OrderService } from "./service/order.service";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -52,6 +53,7 @@ import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.componen
 import { LoginComponent } from "./login/login.component";
 import { ProductCardComponent } from "./main/product-card/product-card.component";
 import { ProductQuantityComponent } from "./main/product-quantity/product-quantity.component";
+import { ShoppingcartDetailComponent } from './main/shoppingcart-detail/shoppingcart-detail.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { ProductQuantityComponent } from "./main/product-quantity/product-quanti
     LoginComponent,
     ProductFormComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShoppingcartDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +104,8 @@ import { ProductQuantityComponent } from "./main/product-quantity/product-quanti
     UserService,
     CategoryService,
     ProductService,
-    CartService
+    CartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

@@ -66,25 +66,29 @@ export class CartService {
       .valueChanges()
       .take(1)
       .subscribe((resItem: Product) => {
-        if (resItem === null) {
-          item.update({
+        if (resItem) {
+          const quantity = (resItem.quantity || 0) + change;
+          quantity ? item.update({ quantity: quantity }) : item.remove();
+        } else {
+          item.set({
             title: product.payload.val().title,
             imageUrl: product.payload.val().imageUrl,
             price: product.payload.val().price,
             quantity: 1
           });
-        } else {
-          const quantity = (resItem.quantity || 0) + change;
-          if (quantity === 0) item.remove();
-          else {
-            item.update({
-              title: product.payload.val().title,
-              imageUrl: product.payload.val().imageUrl,
-              price: product.payload.val().price,
-              quantity: quantity
-            });
-          }
         }
       });
   }
 }
+
+// const quantity = (resItem.quantity || 0) + change;
+// if (quantity === 0) item.remove();
+// else {
+//   console.log(product.payload.val());
+//   item.update({
+//     title: product.payload.val().title,
+//     imageUrl: product.payload.val().imageUrl,
+//     price: product.payload.val().price,
+//     quantity: quantity
+//   });
+// }

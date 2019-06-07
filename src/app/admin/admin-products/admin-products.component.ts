@@ -28,7 +28,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       .getProductsFromFirebase()
       .subscribe(res => {
         this.products = res;
-        this.initializeTable(res);
+        this.initializeTable(this.products);
       });
   }
 

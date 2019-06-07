@@ -1,3 +1,82 @@
-<p>
-  check-out works!
-</p>
+<div class="row">
+  <div class="col-md-5">
+    <mat-card class="example-card">
+      <form #f="ngForm" (ngSubmit)="checkOut(f.value)">
+        <div class="form-group">
+          <label for="fname">Full Name</label>
+          <input
+            [(ngModel)]="fullname"
+            name="fname"
+            #fname="ngModel"
+            id="fname"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="fname.touched && fname.invalid"
+          >
+            Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            [(ngModel)]="fulladdress"
+            name="address"
+            #address="ngModel"
+            id="address"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="address.touched && address.invalid"
+          >
+            Address is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            [(ngModel)]="phonenum"
+            name="phone"
+            #phone="ngModel"
+            id="phone"
+            class="form-control"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="phone.touched && phone.invalid"
+          >
+            Phone number is required.
+          </div>
+        </div>
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn"
+          style="color: white;background-color: rgb(71, 161, 202)"
+        >
+          Order
+        </button>
+      </form>
+    </mat-card>
+  </div>
+  <mat-divider [vertical]="true"> </mat-divider>
+  <div class="col-md-5">
+    <mat-card>
+      <mat-card-footer class="card-footer">
+        <mat-card-title>{{ fullname }}</mat-card-title>
+        <mat-chip-list>
+          <mat-chip>
+            {{ fulladdress }}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

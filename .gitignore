@@ -8,6 +8,8 @@
 
 # dependencies
 /node_modules
+.firebaserc
+firebase.json
 
 # IDEs and editors
 /.idea
@@ -17,6 +19,7 @@
 *.launch
 .settings/
 *.sublime-workspace
+.firebase/*
 
 # IDE - VSCode
 .vscode/*

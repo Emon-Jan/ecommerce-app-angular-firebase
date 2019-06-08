@@ -14,7 +14,6 @@ import { ProductService } from "./../../service/product.service";
   styleUrls: ["./products.component.css"]
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-  // tslint:disable-next-line:no-inferrable-types
   category: string = "";
   cart;
   products: any[];

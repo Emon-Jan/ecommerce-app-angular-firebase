@@ -80,15 +80,3 @@ export class CartService {
       });
   }
 }
-
-// const quantity = (resItem.quantity || 0) + change;
-// if (quantity === 0) item.remove();
-// else {
-//   console.log(product.payload.val());
-//   item.update({
-//     title: product.payload.val().title,
-//     imageUrl: product.payload.val().imageUrl,
-//     price: product.payload.val().price,
-//     quantity: quantity
-//   });
-// }

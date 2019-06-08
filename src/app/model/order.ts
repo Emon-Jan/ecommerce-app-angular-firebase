@@ -3,6 +3,8 @@ import { ShoppingCart } from "./shopping-cart";
 export class Order {
   dateTime: number;
   items: any[];
+  grossPrice: number;
+
   constructor(
     public userId: string,
     public sippingInfo: any,
@@ -20,5 +22,6 @@ export class Order {
         totalPrice: res.totalPrice
       };
     });
+    this.grossPrice = shoppingCart.totalItemsPrice;
   }
 }

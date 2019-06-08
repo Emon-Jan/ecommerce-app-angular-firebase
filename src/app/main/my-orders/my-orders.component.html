@@ -1,3 +1,25 @@
-<p>
-  my-orders works!
-</p>
+<ng-container *ngIf="order | async as order">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Order Date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of order">
+        <td>{{ item.sippingInfo.fullname }}</td>
+        <td>{{ item.dateTime | date: "medium" }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-outline-dark"
+            (click)="displayOrderDetail(item)"
+          >
+            View
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

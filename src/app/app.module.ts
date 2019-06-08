@@ -15,7 +15,8 @@ import {
   MatSortModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatDialogModule
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -46,14 +47,17 @@ import { ProductFormComponent } from "./admin/admin-products/product-form/produc
 import { ShoppingCartComponent } from "./main/shopping-cart/shopping-cart.component";
 import { CheckOutComponent } from "./main/check-out/check-out.component";
 import { OrderSuccessComponent } from "./main/order-success/order-success.component";
-import { MyOrdersComponent } from "./main/my-orders/my-orders.component";
+import {
+  MyOrdersComponent,
+  DialogOverviewComponent
+} from "./main/my-orders/my-orders.component";
 
 import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
 import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
 import { LoginComponent } from "./login/login.component";
 import { ProductCardComponent } from "./main/product-card/product-card.component";
 import { ProductQuantityComponent } from "./main/product-quantity/product-quantity.component";
-import { ShoppingcartDetailComponent } from './main/shoppingcart-detail/shoppingcart-detail.component';
+import { ShoppingcartDetailComponent } from "./main/shoppingcart-detail/shoppingcart-detail.component";
 
 @NgModule({
   declarations: [
@@ -72,8 +76,10 @@ import { ShoppingcartDetailComponent } from './main/shoppingcart-detail/shopping
     ProductFormComponent,
     ProductCardComponent,
     ProductQuantityComponent,
-    ShoppingcartDetailComponent
+    ShoppingcartDetailComponent,
+    DialogOverviewComponent
   ],
+  entryComponents: [DialogOverviewComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -92,6 +98,7 @@ import { ShoppingcartDetailComponent } from './main/shoppingcart-detail/shopping
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
+    MatDialogModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

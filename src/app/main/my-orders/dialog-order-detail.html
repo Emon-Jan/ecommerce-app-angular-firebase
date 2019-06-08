@@ -1,0 +1,37 @@
+<div style="text-align: center;font-family: Righteous;">
+  <h1>Order Summary</h1>
+</div>
+<p style="font-family: Roboto;">
+  Order Date: {{ data.dateTime | date: "medium" }}
+</p>
+<div mat-dialog-content>
+  <p>You have ordered {{ data.items.length }} item(s).</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item Info.</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data.items; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.product.title }} X {{ item.quantity }}</td>
+        <td>{{ item.totalPrice | currency: "BDT":"symbol-narrow" }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Total</th>
+        <th></th>
+        <th>
+          {{ data.grossPrice | currency: "BDT":"symbol-narrow" }}
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="btn btn-danger" (click)="onNoClick()">Close</button>
+</div>

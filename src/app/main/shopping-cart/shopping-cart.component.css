@@ -10,3 +10,8 @@ th,
 td {
   text-align: center;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
+}

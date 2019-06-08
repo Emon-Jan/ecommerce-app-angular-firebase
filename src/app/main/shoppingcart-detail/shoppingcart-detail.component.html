@@ -1,6 +1,8 @@
 <mat-card *ngIf="shoppingCart">
-  <mat-card-title>Order Summary</mat-card-title>
-  <mat-card-subtitle>
+  <mat-card-title class="text-dark" style="font-family: Roboto">
+    Order Summary
+  </mat-card-title>
+  <mat-card-subtitle style="font-family: Roboto;">
     You have {{ shoppingCart.totalItemsCount }} items in your cart
   </mat-card-subtitle>
   <mat-card-content>

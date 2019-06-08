@@ -1,20 +1,18 @@
-<h1>
-  Shopping Cart
-</h1>
-<ng-container *ngIf="cart$ | async as cart">
-  <p>
-    Your shopping cart has {{ cart.totalItemsCount }} items
-    <button
-      class="btn btn-outline-danger btn-sm"
-      *ngIf="cart.totalItemsCount"
-      (click)="removeCartItems()"
-    >
-      Clear Cart
-    </button>
-  </p>
-  <div class="row">
+<div class="row">
+  <ng-container *ngIf="cart$ | async as cart">
+    <div class="col-md-3">
+      <mat-card-title>
+        <h2 class="text-dark">
+          Shopping Cart
+        </h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p>Your shopping cart has {{ cart.totalItemsCount }} items</p>
+      </mat-card-subtitle>
+    </div>
+    <mat-divider [vertical]="true"> </mat-divider>
     <div class="col-md-8">
-      <table class="table" *ngIf="cart.totalItemsCount">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -52,14 +50,30 @@
           </tr>
         </tfoot>
       </table>
-      <a
-        class="btn btn-primary btn-sm"
-        *ngIf="cart.totalItemsCount"
-        [routerLink]="['/check-out']"
-      >
-        Check Out
-      </a>
+      <div class="row">
+        <div class="col-md-10 offset-1">
+          <div class="flex-container">
+            <div>
+              <button
+                class="btn btn-outline-danger btn-sm"
+                *ngIf="cart.totalItemsCount"
+                (click)="removeCartItems()"
+              >
+                Clear Cart
+              </button>
+            </div>
+            <div>
+              <a
+                class="btn btn-outline-primary btn-sm"
+                *ngIf="cart.totalItemsCount"
+                [routerLink]="['/check-out']"
+              >
+                Check Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4"></div>
-  </div>
-</ng-container>
+  </ng-container>
+</div>

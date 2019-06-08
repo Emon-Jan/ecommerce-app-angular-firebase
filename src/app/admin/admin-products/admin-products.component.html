@@ -1,64 +1,86 @@
-<div class="row">
-    <div class="col-md-8">
-        <a class="btn" mat-raised-button color="primary" routerLink="/admin-products/new">
-            <i class="material-icons"> add </i>
-            New Product
-        </a>
+<!-- <div class="row"></div> -->
+<div class="row pt-1">
+  <div class="col-md-3">
+    <h2 class="text-dark">Manage Product</h2>
+    <a
+      class="btn"
+      mat-raised-button
+      color="primary"
+      routerLink="/admin-products/new"
+    >
+      <i class="material-icons"> add </i>
+      New Product
+    </a>
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="col-md-8">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput #q (keyup)="filter(q.value)" placeholder="Search..." />
+      </mat-form-field>
+
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource" matSort>
+          <!-- Image Column -->
+          <ng-container matColumnDef="imageUrl">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              #
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <div
+                [style.backgroundImage]="
+                  'url(' + row.payload.val().imageUrl + ')'
+                "
+                class="thumbnail"
+              ></div>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Title
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              {{ row.payload.val().title }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Price
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              {{ row.payload.val().price | currency: "BDT":"symbol-narrow" }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Key Column -->
+          <ng-container matColumnDef="key">
+            <mat-header-cell *matHeaderCellDef>
+              <!-- <i class="material-icons"> edit </i> -->
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <a
+                class="btn btn-block btn-sm btn-outline-dark"
+                [routerLink]="['/admin-products/', row.key]"
+                >Edit</a
+              >
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+        </mat-table>
+
+        <mat-paginator
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+        ></mat-paginator>
+      </div>
     </div>
-</div>
-<div class="row pt-3">
-    <div class="col-md-10">
-        <div class="example-header">
-            <mat-form-field>
-                <input matInput #q (keyup)="filter(q.value)" placeholder="Filter">
-            </mat-form-field>
-
-            <div class="example-container mat-elevation-z8">
-                <mat-table #table [dataSource]="dataSource" matSort>
-
-                    <!-- Image Column -->
-                    <ng-container matColumnDef="imageUrl">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> #
-                        </mat-header-cell>
-                        <mat-cell *matCellDef="let row">
-                            <div [style.backgroundImage]="'url(' + row.payload.val().imageUrl + ')'" class="thumbnail"></div>
-                        </mat-cell>
-                    </ng-container>
-
-                    <!-- Title Column -->
-                    <ng-container matColumnDef="title">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> Title
-                        </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.payload.val().title}} </mat-cell>
-                    </ng-container>
-
-                    <!-- Price Column -->
-                    <ng-container matColumnDef="price">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> Price
-                        </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.payload.val().price | currency:'BDT':'symbol-narrow'}}
-                        </mat-cell>
-                    </ng-container>
-
-                    <!-- Key Column -->
-                    <ng-container matColumnDef="key">
-                        <mat-header-cell *matHeaderCellDef>
-                            <!-- <i class="material-icons"> edit </i> -->
-                        </mat-header-cell>
-                        <mat-cell *matCellDef="let row">
-                            <a mat-button class="btn" [routerLink]="['/admin-products/', row.key]">Edit</a>
-                        </mat-cell>
-                    </ng-container>
-
-                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: displayedColumns;">
-                    </mat-row>
-                </mat-table>
-
-                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
 <!-- <table class="table table-striped">

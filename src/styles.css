@@ -8,3 +8,13 @@ body {
   padding-bottom: 10px;
   font-family: "Roboto", Courier, monospace;
 }
+
+table {
+  max-height: 420px;
+  overflow-y: auto;
+  display: inline-flexbox;
+}
+
+th {
+  color: DARKSLATEGRAY;
+}

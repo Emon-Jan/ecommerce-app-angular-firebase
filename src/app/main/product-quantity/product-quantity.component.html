@@ -1,12 +1,17 @@
 <div class="row no-gutters">
   <div class="col-md-2">
-    <button class="btn btn-block btn-secondary" (click)="addToCart()">+</button>
+    <button class="btn btn-block btn-secondary btn-sm" (click)="addToCart()">
+      +
+    </button>
   </div>
   <div class="col text-center pt-2" style="font-family: Roboto">
     {{ shoppingCart.getQuantity(product) }} items
   </div>
   <div class="col-md-2">
-    <button class="btn btn-block btn-secondary" (click)="removeFromCart()">
+    <button
+      class="btn btn-block btn-secondary btn-sm"
+      (click)="removeFromCart()"
+    >
       -
     </button>
   </div>

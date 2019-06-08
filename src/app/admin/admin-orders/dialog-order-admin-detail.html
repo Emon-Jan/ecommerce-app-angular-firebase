@@ -1,5 +1,5 @@
-<div style="text-align: center;font-family: Roboto;">
-  <h1 class="text-dark">Order Summary</h1>
+<div class="text-dark" style="text-align: center;font-family: Roboto;">
+  <h1>Order Summary</h1>
 </div>
 <p style="font-family: Roboto;">
   Order Date: {{ data.dateTime | date: "medium" }}
@@ -35,5 +35,5 @@
   </table>
 </div>
 <div mat-dialog-actions>
-  <button class="btn btn-danger" (click)="onNoClick()">Close</button>
+  <button class="btn btn-danger" (click)="onClick()">Close</button>
 </div>

@@ -27,7 +27,7 @@ export class MyOrdersComponent implements OnInit {
 
   displayOrderDetail(item): void {
     const dialogRef = this.dialog.open(DialogOverviewComponent, {
-      width: "700px",
+      width: "600px",
       data: item
     });
   }

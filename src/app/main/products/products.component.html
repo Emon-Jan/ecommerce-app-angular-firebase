@@ -9,8 +9,15 @@
             <a routerLink="/products" mat-list-item> All Categories</a>
             <ng-container *ngFor="let c of categories">
               <mat-divider></mat-divider>
-              <a routerLink="/products" [ngStyle]="{'background-color':category === c.key ? 'lightgrey' : '' }" mat-list-item [queryParams]="{category: c.key}">{{
-                c.payload.val().name }} </a>
+              <a
+                routerLink="/products"
+                [ngStyle]="{
+                  'background-color': category === c.key ? 'lightgrey' : ''
+                }"
+                mat-list-item
+                [queryParams]="{ category: c.key }"
+                >{{ c.payload.val().name }}
+              </a>
             </ng-container>
           </mat-nav-list>
         </div>
@@ -19,10 +26,13 @@
   </div>
   <div class="col-md-9">
     <div class="row">
-      <ng-container *ngFor="let product of filteredProducts; let i=index">
-        <div class="col-md-4 col-sm-4">
-          <app-product-card [item]="product" [shopping-cart]="cart"></app-product-card>
-          <div *ngIf="(i+1) % 2 === 0" class="w-100"></div>
+      <ng-container *ngFor="let product of filteredProducts; let i = index">
+        <div class="col-md-4 col-sm-6">
+          <app-product-card
+            [item]="product"
+            [shopping-cart]="cart"
+          ></app-product-card>
+          <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
         </div>
       </ng-container>
     </div>

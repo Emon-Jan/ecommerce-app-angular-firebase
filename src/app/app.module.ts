@@ -53,7 +53,10 @@ import {
 } from "./main/my-orders/my-orders.component";
 
 import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
-import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
+import {
+  AdminOrdersComponent,
+  DialogOverviewAdminComponent
+} from "./admin/admin-orders/admin-orders.component";
 import { LoginComponent } from "./login/login.component";
 import { ProductCardComponent } from "./main/product-card/product-card.component";
 import { ProductQuantityComponent } from "./main/product-quantity/product-quantity.component";
@@ -77,9 +80,10 @@ import { ShoppingcartDetailComponent } from "./main/shoppingcart-detail/shopping
     ProductCardComponent,
     ProductQuantityComponent,
     ShoppingcartDetailComponent,
-    DialogOverviewComponent
+    DialogOverviewComponent,
+    DialogOverviewAdminComponent
   ],
-  entryComponents: [DialogOverviewComponent],
+  entryComponents: [DialogOverviewComponent, DialogOverviewAdminComponent],
   imports: [
     BrowserModule,
     CommonModule,

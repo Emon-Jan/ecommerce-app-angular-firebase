@@ -12,10 +12,14 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">
-          <i class="material-icons" style="vertical-align: middle;" >
-          shopping_cart
+          <i class="material-icons" style="vertical-align: middle;">
+            shopping_cart
           </i>
-          <span class="badge badge-danger badge-pill" *ngIf="cart">{{ cart.totalItemsCount }}</span>
+          <span class="badge badge-danger badge-pill">
+            <ng-container *ngIf="cart">
+              {{ cart.totalItemsCount }}
+            </ng-container>
+          </span>
           Shopping Cart
         </a>
       </li>

@@ -5,12 +5,13 @@ import { AngularFireDatabase } from "angularfire2/database";
 import { Product } from "./../model/product.model";
 import { ShoppingCart } from "../model/shopping-cart";
 
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import "rxjs/add/operator/take";
 import "rxjs/add/operator/map";
 
 @Injectable()
 export class CartService {
+  cartItemsCountCahnged = new Subject<ShoppingCart>();
   constructor(private afdb: AngularFireDatabase) {}
 
   private create() {
@@ -26,8 +27,12 @@ export class CartService {
       .valueChanges()
       .map((x: any) => {
         if (x === null) {
+          this.cartItemsCountCahnged.next(new ShoppingCart({}));
           return new ShoppingCart({});
-        } else return new ShoppingCart(x.items);
+        } else {
+          this.cartItemsCountCahnged.next(new ShoppingCart(x.items));
+          return new ShoppingCart(x.items);
+        }
       });
   }
 
@@ -70,11 +75,11 @@ export class CartService {
           const quantity = (resItem.quantity || 0) + change;
           quantity ? item.update({ quantity: quantity }) : item.remove();
         } else {
-          item.set({
+          item.update({
             title: product.payload.val().title,
             imageUrl: product.payload.val().imageUrl,
             price: product.payload.val().price,
-            quantity: 1
+            quantity: change
           });
         }
       });

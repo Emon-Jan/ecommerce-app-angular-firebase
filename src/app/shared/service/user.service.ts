@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 import { Observable } from "rxjs";
 import * as firebase from "firebase";
-import { User } from "../model/user.model";
+import { User } from "shared/model/user.model";
 import { AngularFireDatabase } from "angularfire2/database";
 
 @Injectable()

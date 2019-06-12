@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
-import { Order } from "../../model/order";
+import { Order } from "shared/model/order";
 
-import { OrderService } from "../../service/order.service";
+import { OrderService } from "shared/service/order.service";
 
 @Component({
   selector: "app-admin-orders",

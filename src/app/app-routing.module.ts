@@ -3,22 +3,22 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { HomeComponent } from "./main/home/home.component";
 import { ProductsComponent } from "./main/products/products.component";
-import { ProductFormComponent } from "./admin/admin-products/product-form/product-form.component";
+import { ProductFormComponent } from "./admin/components/admin-products/product-form/product-form.component";
 import { OrderSuccessComponent } from "./main/order-success/order-success.component";
 import { CheckOutComponent } from "./main/check-out/check-out.component";
 import { ShoppingCartComponent } from "./main/shopping-cart/shopping-cart.component";
 import { MyOrdersComponent } from "./main/my-orders/my-orders.component";
 
-import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
-import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
+import { AdminOrdersComponent } from "./admin/components/admin-orders/admin-orders.component";
+import { AdminProductsComponent } from "./admin/components/admin-products/admin-products.component";
 
 import { LoginComponent } from "./login/login.component";
 
-import { AdminGuard } from "./service/admin-guard.service";
-import { AuthGuard } from "./service/auth-guard.service";
+import { AdminGuard } from "./admin/services/admin-guard.service";
+import { AuthGuard } from "shared/service/auth-guard.service";
 
 const routes: Routes = [
-  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "", redirectTo: "/products", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "products", component: ProductsComponent },
   { path: "shopping-cart", component: ShoppingCartComponent },

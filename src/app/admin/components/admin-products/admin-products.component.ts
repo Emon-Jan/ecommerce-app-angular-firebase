@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
 
 import { Subscription } from "rxjs";
-import { Product } from "./../../model/product.model";
-import { ProductService } from "./../../service/product.service";
+import { Product } from "shared/model/product.model";
+import { ProductService } from "shared/service/product.service";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 
 @Component({

@@ -1,12 +1,12 @@
-import { CartService } from "./../../service/cart.service";
-import { Product } from "./../../model/product.model";
+import { CartService } from "shared/service/cart.service";
+import { Product } from "shared/model/product.model";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 
 // tslint:disable-next-line:import-blacklist
 import { Subscription } from "rxjs";
-import { CategoryService } from "./../../service/category.service";
-import { ProductService } from "./../../service/product.service";
+import { CategoryService } from "shared/service/category.service";
+import { ProductService } from "shared/service/product.service";
 
 @Component({
   selector: "app-products",

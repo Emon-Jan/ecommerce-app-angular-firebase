@@ -4,8 +4,8 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import "rxjs/add/operator/take";
 
-import { ProductService } from "./../../../service/product.service";
-import { CategoryService } from "./../../../service/category.service";
+import { ProductService } from "shared/service/product.service";
+import { CategoryService } from "shared/service/category.service";
 
 @Component({
   selector: "app-product-form",

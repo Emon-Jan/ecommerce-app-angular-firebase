@@ -7,7 +7,7 @@ import "rxjs/Rx";
 
 import { auth } from "firebase";
 import * as firebase from "firebase";
-import { User } from "./../model/user.model";
+import { User } from "shared/model/user.model";
 import { UserService } from "./user.service";
 
 @Injectable()

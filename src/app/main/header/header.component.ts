@@ -1,10 +1,10 @@
-import { ShoppingCart } from "./../../model/shopping-cart";
+import { ShoppingCart } from "shared/model/shopping-cart";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { User } from "./../../model/user.model";
-import { AuthService } from "./../../service/auth.service";
-import { CartService } from "./../../service/cart.service";
+import { User } from "shared/model/user.model";
+import { AuthService } from "shared/service/auth.service";
+import { CartService } from "shared/service/cart.service";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -15,7 +15,7 @@ import { Subscription } from "rxjs";
 export class HeaderComponent implements OnInit, OnDestroy {
   guestUser: User;
   authSubscription: Subscription;
-  cart: ShoppingCart;
+  cart: ShoppingCart = new ShoppingCart({});
   cartSubscription: Subscription;
 
   constructor(

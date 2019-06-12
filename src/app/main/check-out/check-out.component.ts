@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 
-import { Order } from "../../model/order";
+import { Order } from "shared/model/order";
 
-import { OrderService } from "../../service/order.service";
-import { AuthService } from "../../service/auth.service";
+import { OrderService } from "shared/service/order.service";
+import { AuthService } from "shared/service/auth.service";
 import { Subscription } from "rxjs";
-import { ShoppingCart } from "../../model/shopping-cart";
-import { CartService } from "../../service/cart.service";
+import { ShoppingCart } from "shared/model/shopping-cart";
+import { CartService } from "shared/service/cart.service";
 import { Router } from "@angular/router";
 
 @Component({

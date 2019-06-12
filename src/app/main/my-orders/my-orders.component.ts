@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
-import { Order } from "../../model/order";
+import { Order } from "shared/model/order";
 
-import { AuthService } from "../../service/auth.service";
-import { OrderService } from "../../service/order.service";
+import { AuthService } from "shared/service/auth.service";
+import { OrderService } from "shared/service/order.service";
 
 @Component({
   selector: "app-my-orders",

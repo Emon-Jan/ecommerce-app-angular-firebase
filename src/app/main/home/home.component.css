@@ -1,0 +1,10 @@
+div.slider-item {
+  margin: 0 auto;
+  max-width: auuto;
+  height: 400px;
+  justify-content: center;
+}
+
+div > img {
+  height: 400px;
+}

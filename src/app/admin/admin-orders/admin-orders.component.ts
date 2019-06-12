@@ -3,7 +3,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
 import { Order } from "../../model/order";
 
-import { AuthService } from "../../service/auth.service";
 import { OrderService } from "../../service/order.service";
 
 @Component({
@@ -28,8 +27,9 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   orderDetail(item): void {
+    // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogOverviewAdminComponent, {
-      width: "700px",
+      height: "320px",
       data: item
     });
   }

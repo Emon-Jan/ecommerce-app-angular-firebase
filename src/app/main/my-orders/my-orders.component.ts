@@ -26,8 +26,9 @@ export class MyOrdersComponent implements OnInit {
   }
 
   displayOrderDetail(item): void {
+    // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogOverviewComponent, {
-      width: "600px",
+      height: "320px",
       data: item
     });
   }

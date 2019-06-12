@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { User } from "./../../model/user.model";
 import { AuthService } from "./../../service/auth.service";
 import { CartService } from "./../../service/cart.service";
-import { Subscription, Observable } from "rxjs";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-header",
@@ -15,24 +15,25 @@ import { Subscription, Observable } from "rxjs";
 export class HeaderComponent implements OnInit, OnDestroy {
   guestUser: User;
   authSubscription: Subscription;
-  itemCount: number;
   cart: ShoppingCart;
+  cartSubscription: Subscription;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private shoppingCartService: CartService
-  ) {}
-
-  async ngOnInit() {
+  ) {
     this.authSubscription = this.authService.eUser.subscribe(
       user => (this.guestUser = user)
     );
-    const cart$ = await this.shoppingCartService.getCart();
-    cart$.subscribe(res => {
-      this.cart = res;
-    });
+    this.cartSubscription = this.shoppingCartService.cartItemsCountCahnged.subscribe(
+      res => {
+        this.cart = res;
+      }
+    );
   }
+
+  ngOnInit() {}
 
   onLogout() {
     this.authService.logOut();
@@ -41,5 +42,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
+    this.cartSubscription.unsubscribe();
   }
 }

@@ -1,4 +1,4 @@
-<h1 class="text-dark" style="font-family: Roboto;">My Order</h1>
+<h1 class="text-dark">My Order</h1>
 <mat-divider class="bg-warning mt-3 mb-3"></mat-divider>
 <ng-container *ngIf="order | async as order">
   <table class="table">
@@ -20,7 +20,9 @@
             class="btn btn-sm btn-outline-dark"
             (click)="displayOrderDetail(item)"
           >
-            View
+            <i class="material-icons" style="vertical-align: middle">
+              pageview
+            </i>
           </button>
         </td>
       </tr>

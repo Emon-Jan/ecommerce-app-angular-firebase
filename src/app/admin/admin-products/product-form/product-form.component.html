@@ -1,5 +1,5 @@
 <h2 class="text-dark">{{ isDelete ? "Update Product" : "New Product" }}</h2>
-<mat-divider class="bg-warning m-3"></mat-divider>
+<mat-divider class="bg-warning mt-3 mb-3"></mat-divider>
 <div class="row">
   <div class="col-md-6">
     <mat-card class="example-card">
@@ -89,21 +89,16 @@
             <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
           </div>
         </div>
-        <button
-          mat-raised-button
-          type="submit"
-          class="btn"
-          style="color: white;background-color: rgb(71, 161, 202)"
-        >
+        <button class="btn btn-sm btn-outline-dark" type="submit">
+          <mat-icon style="vertical-align: middle;">
+            save_alt
+          </mat-icon>
           Save
         </button>
-        <button
-          mat-raised-button
-          type="button"
-          class="btn"
-          color="warn"
-          (click)="delete()"
-        >
+        <button class="btn btn-sm btn-outline-danger" (click)="delete()">
+          <mat-icon style="vertical-align: middle;">
+            cancel
+          </mat-icon>
           {{ isDelete ? "Delete" : "Cancel" }}
         </button>
       </form>

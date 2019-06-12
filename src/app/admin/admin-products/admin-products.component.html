@@ -3,12 +3,10 @@
   <div class="col-md-3">
     <h2 class="text-dark">Manage Product</h2>
     <a
-      class="btn"
-      mat-raised-button
-      color="primary"
+      class="btn btn-sm btn-outline-secondary"
       routerLink="/admin-products/new"
     >
-      <i class="material-icons"> add </i>
+      <i class="material-icons" style="vertical-align: middle;"> add </i>
       New Product
     </a>
   </div>
@@ -19,7 +17,7 @@
         <input matInput #q (keyup)="filter(q.value)" placeholder="Search..." />
       </mat-form-field>
 
-      <div class="example-container mat-elevation-z8">
+      <div class="example-container mat-elevation-z2">
         <mat-table #table [dataSource]="dataSource" matSort>
           <!-- Image Column -->
           <ng-container matColumnDef="imageUrl">
@@ -65,8 +63,12 @@
               <a
                 class="btn btn-block btn-sm btn-outline-dark"
                 [routerLink]="['/admin-products/', row.key]"
-                >Edit</a
               >
+                <i class="material-icons" style="vertical-align: middle;">
+                  edit
+                </i>
+                Edit
+              </a>
             </mat-cell>
           </ng-container>
 
@@ -82,26 +84,3 @@
     </div>
   </div>
 </div>
-
-<!-- <table class="table table-striped">
-    <thead>
-        <tr>
-            <scope="col">Title</th>
-            <th scope="col">Price</th>
-            <th scope="col">
-                <i class="material-icons">
-                    edit
-                </i>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of filteredProducts">
-            <td>{{ p.payload.val().title }}</td>
-            <td>{{ p.payload.val().price | currency:'BDT':'symbol-narrow' }}</td>
-            <td>
-                <a mat-button class="btn" [routerLink]="['/admin-products/', p.key]">Edit</a>
-            </td>
-        </tr>
-    </tbody>
-</table> -->

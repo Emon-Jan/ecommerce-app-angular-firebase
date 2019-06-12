@@ -1,13 +1,9 @@
-<div class="text-dark" style="text-align: center;font-family: Roboto;">
+<div class="text-dark" style="text-align: center;">
   <h3>Order Summary</h3>
 </div>
-<p style="font-family: Roboto;">
-  Order Date: {{ data.dateTime | date: "medium" }}
-</p>
+<p>Order Date: {{ data.dateTime | date: "medium" }}</p>
 <div mat-dialog-content>
-  <p style="font-family: Roboto;">
-    You have ordered {{ data.items.length }} item(s).
-  </p>
+  <p>You have ordered {{ data.items.length }} item(s).</p>
   <table class="table">
     <thead>
       <tr>

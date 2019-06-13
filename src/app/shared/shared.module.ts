@@ -62,7 +62,6 @@ import { UserService } from "./service/user.service";
     MatSortModule,
     MatSelectModule,
     MatDialogModule,
-    MatIconModule,
     MatListModule,
     MatProgressBarModule
   ],

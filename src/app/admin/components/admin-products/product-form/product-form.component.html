@@ -90,16 +90,26 @@
           </div>
         </div>
         <button class="btn btn-sm btn-outline-success" type="submit">
-          <mat-icon >
+          <i class="material-icons">
             save_alt
-          </mat-icon>
+          </i>
           Save
         </button>
         <button class="btn btn-sm btn-outline-danger" (click)="delete()">
-          <mat-icon >
-            close
-          </mat-icon>
+          <i class="material-icons">
+            delete_forever
+          </i>
           {{ isDelete ? "Delete" : "Cancel" }}
+        </button>
+        <button
+          class="btn btn-sm btn-light"
+          (click)="goBack()"
+          *ngIf="isDelete"
+        >
+          <i class="material-icons">
+            cancel
+          </i>
+          Cancel
         </button>
       </form>
     </mat-card>

@@ -1,9 +1,11 @@
 <div class="text-dark" style="text-align: center;">
-  <h3>Order Summary</h3>
+  <h5>Order Summary</h5>
 </div>
 <p>Order Date: {{ data.dateTime | date: "medium" }}</p>
+<p>Shipping Address: {{ data.sippingInfo.fulladdress }}</p>
+<p>Phone: {{ data.sippingInfo.phonenum }}</p>
 <div mat-dialog-content>
-  <p>You have ordered {{ data.items.length }} item(s).</p>
+  <p>You have ordered {{ data.items.length }} types of item(s).</p>
   <table class="table">
     <thead>
       <tr>

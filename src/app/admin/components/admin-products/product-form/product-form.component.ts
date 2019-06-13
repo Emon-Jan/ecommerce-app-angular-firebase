@@ -1,11 +1,10 @@
-import { Router, ActivatedRoute } from "@angular/router";
-import { Component, OnInit, OnDestroy } from "@angular/core";
-
-import { Subscription } from "rxjs";
 import "rxjs/add/operator/take";
 
-import { ProductService } from "shared/service/product.service";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Subscription } from "rxjs";
 import { CategoryService } from "shared/service/category.service";
+import { ProductService } from "shared/service/product.service";
 
 @Component({
   selector: "app-product-form",
@@ -32,9 +31,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       .getCategories()
       .subscribe(res => {
         this.categories = res;
-        // console.log(
-        //   this.categories[0].key + " " + this.categories[0].payload.val().name
-        // );
       });
 
     if (this.id) {
@@ -43,14 +39,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         .getProductFromFirebase(this.id)
         .take(1)
         .subscribe(res => {
-          // console.log(res);
           this.product = res;
         });
     }
   }
 
   save(product) {
-    // console.log(product);
     if (this.id) {
       this.productService
         .updateProductOnFirebase(this.id, product)
@@ -76,6 +70,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     } else {
       this.router.navigate(["/admin-products"]);
     }
+  }
+
+  goBack() {
+    this.router.navigate(["/admin-products"], { relativeTo: this.route });
   }
 
   ngOnDestroy() {

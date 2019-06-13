@@ -1,8 +1,7 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-
+import { Component, Inject, OnInit, OnDestroy } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material";
+import { Subscription } from "rxjs/Subscription";
 import { Order } from "shared/model/order";
-
 import { OrderService } from "shared/service/order.service";
 
 @Component({
@@ -10,30 +9,30 @@ import { OrderService } from "shared/service/order.service";
   templateUrl: "./admin-orders.component.html",
   styleUrls: ["./admin-orders.component.css"]
 })
-export class AdminOrdersComponent implements OnInit {
+export class AdminOrdersComponent implements OnInit, OnDestroy {
   order: any;
+  orderDownload = false;
+  orderSubcription: Subscription;
 
   constructor(private orderService: OrderService, public dialog: MatDialog) {}
 
   async ngOnInit() {
     this.order = await this.orderService.getOrder().valueChanges();
-    // this.order.subscribe(res => {
-    //   console.log(res.key);
-    // });
-  }
-
-  orderDelete(item) {
-    console.log(item.key);
+    this.orderSubcription = this.order.subscribe(res => {
+      this.orderDownload = true;
+    });
   }
 
   orderDetail(item): void {
-    console.log(item);
-
     // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogOverviewAdminComponent, {
       height: "500px",
       data: item
     });
+  }
+
+  ngOnDestroy() {
+    this.orderSubcription.unsubscribe();
   }
 }
 

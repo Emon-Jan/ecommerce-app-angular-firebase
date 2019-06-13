@@ -1,8 +1,11 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-
+import { Component, Inject, OnInit, OnDestroy } from "@angular/core";
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef
+} from "@angular/material/dialog";
+import { Subscription } from "rxjs";
 import { Order } from "shared/model/order";
-
 import { AuthService } from "shared/service/auth.service";
 import { OrderService } from "shared/service/order.service";
 
@@ -11,8 +14,11 @@ import { OrderService } from "shared/service/order.service";
   templateUrl: "./my-orders.component.html",
   styleUrls: ["./my-orders.component.css"]
 })
-export class MyOrdersComponent implements OnInit {
+export class MyOrdersComponent implements OnInit, OnDestroy {
   order: any;
+  orderDownload = false;
+  orderSubcription: Subscription;
+
   constructor(
     private authService: AuthService,
     private orderService: OrderService,
@@ -23,6 +29,9 @@ export class MyOrdersComponent implements OnInit {
     this.order = await this.authService.user$.switchMap(user =>
       this.orderService.getOrderByUser(user.uid)
     );
+    this.orderSubcription = this.order.subscribe(res => {
+      this.orderDownload = true;
+    });
   }
 
   displayOrderDetail(item): void {
@@ -31,6 +40,10 @@ export class MyOrdersComponent implements OnInit {
       height: "500px",
       data: item
     });
+  }
+
+  ngOnDestroy() {
+    this.orderSubcription.unsubscribe();
   }
 }
 

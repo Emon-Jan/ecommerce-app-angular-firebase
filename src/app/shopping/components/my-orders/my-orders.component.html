@@ -1,5 +1,7 @@
 <h1 class="text-dark">My Order</h1>
 <mat-divider class="bg-warning mt-3 mb-3"></mat-divider>
+<mat-progress-bar color="warn" mode="indeterminate" *ngIf="!orderDownload">
+</mat-progress-bar>
 <ng-container *ngIf="order | async as order">
   <table class="table">
     <thead>
@@ -7,7 +9,7 @@
         <th scope="col">Name</th>
         <th scope="col">Order Date</th>
         <th scope="col">Total Price</th>
-        <th scope="col"></th>
+        <th scope="col">Details</th>
       </tr>
     </thead>
     <tbody>

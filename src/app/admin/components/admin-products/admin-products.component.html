@@ -2,8 +2,9 @@
 <div class="row pt-1">
   <div class="col-md-3">
     <h2 class="text-dark">Manage Product</h2>
+    <mat-divider class="bg-warning mt-3 mb-3"></mat-divider>
     <a class="btn btn-sm btn-outline-primary" routerLink="/admin-products/new">
-      <i class="material-icons" > add </i>
+      <i class="material-icons"> add </i>
       New Product
     </a>
   </div>
@@ -55,16 +56,16 @@
           <ng-container matColumnDef="key">
             <mat-header-cell *matHeaderCellDef>
               <!-- <i class="material-icons"> edit </i> -->
+              Edit
             </mat-header-cell>
             <mat-cell *matCellDef="let row">
               <a
-                class="btn btn-block btn-sm btn-outline-primary"
+                class="btn btn-sm btn-outline-primary"
                 [routerLink]="['/admin-products/', row.key]"
               >
-                <i class="material-icons" >
+                <i class="material-icons">
                   edit
                 </i>
-                Edit
               </a>
             </mat-cell>
           </ng-container>
@@ -74,7 +75,7 @@
         </mat-table>
 
         <mat-paginator
-          [pageSize]="10"
+          [pageSize]="5"
           [pageSizeOptions]="[5, 10, 25, 100]"
         ></mat-paginator>
       </div>

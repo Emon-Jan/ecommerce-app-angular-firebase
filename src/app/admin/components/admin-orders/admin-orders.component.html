@@ -1,18 +1,24 @@
 <h2 class="text-dark">Manage Order</h2>
 <mat-divider class="bg-warning mt-3 mb-3"></mat-divider>
+<mat-progress-bar color="warn" mode="indeterminate" *ngIf="!orderDownload">
+</mat-progress-bar>
 <ng-container *ngIf="order | async as order">
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Customer Name</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
         <th scope="col">Order Date</th>
-        <th scope="col"></th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Details</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of order">
         <td>{{ item.sippingInfo.fullname }}</td>
+        <td>{{ item.sippingInfo.phonenum }}</td>
         <td>{{ item.dateTime | date: "medium" }}</td>
+        <td>{{ item.grossPrice | currency: "BDT":"symbol-narrow" }}</td>
         <td>
           <button
             class="btn btn-sm btn-outline-primary"

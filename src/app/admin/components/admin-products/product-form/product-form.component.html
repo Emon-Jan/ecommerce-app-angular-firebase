@@ -89,7 +89,7 @@
             <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
           </div>
         </div>
-        <button class="btn btn-sm btn-outline-dark" type="submit">
+        <button class="btn btn-sm btn-outline-success" type="submit">
           <mat-icon style="vertical-align: middle;">
             save_alt
           </mat-icon>
@@ -97,7 +97,7 @@
         </button>
         <button class="btn btn-sm btn-outline-danger" (click)="delete()">
           <mat-icon style="vertical-align: middle;">
-            cancel
+            close
           </mat-icon>
           {{ isDelete ? "Delete" : "Cancel" }}
         </button>

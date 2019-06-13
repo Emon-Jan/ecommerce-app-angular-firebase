@@ -59,6 +59,9 @@
                 *ngIf="cart.totalItemsCount"
                 (click)="removeCartItems()"
               >
+                <i class="material-icons" style="vertical-align: middle">
+                  clear_all
+                </i>
                 Clear Cart
               </button>
             </div>
@@ -68,6 +71,9 @@
                 *ngIf="cart.totalItemsCount"
                 [routerLink]="['/check-out']"
               >
+                <i class="material-icons" style="vertical-align: middle"
+                  >check
+                </i>
                 Check Out
               </a>
             </div>

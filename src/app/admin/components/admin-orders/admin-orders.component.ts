@@ -31,7 +31,7 @@ export class AdminOrdersComponent implements OnInit {
 
     // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogOverviewAdminComponent, {
-      height: "320px",
+      height: "500px",
       data: item
     });
   }

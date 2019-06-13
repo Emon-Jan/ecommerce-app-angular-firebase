@@ -2,10 +2,7 @@
 <div class="row pt-1">
   <div class="col-md-3">
     <h2 class="text-dark">Manage Product</h2>
-    <a
-      class="btn btn-sm btn-outline-secondary"
-      routerLink="/admin-products/new"
-    >
+    <a class="btn btn-sm btn-outline-primary" routerLink="/admin-products/new">
       <i class="material-icons" style="vertical-align: middle;"> add </i>
       New Product
     </a>
@@ -61,7 +58,7 @@
             </mat-header-cell>
             <mat-cell *matCellDef="let row">
               <a
-                class="btn btn-block btn-sm btn-outline-dark"
+                class="btn btn-block btn-sm btn-outline-primary"
                 [routerLink]="['/admin-products/', row.key]"
               >
                 <i class="material-icons" style="vertical-align: middle;">

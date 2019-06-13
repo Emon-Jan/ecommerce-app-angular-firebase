@@ -1,6 +1,20 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { MatCardModule, MatChipsModule } from "@angular/material";
+import { FormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatListModule } from "@angular/material/list";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
 
 import { ProductCardComponent } from "./components/product-card/product-card.component";
 import { ProductQuantityComponent } from "./components/product-quantity/product-quantity.component";
@@ -13,9 +27,45 @@ import { ProductService } from "./service/product.service";
 import { UserService } from "./service/user.service";
 
 @NgModule({
-  imports: [CommonModule, MatCardModule, MatChipsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressBarModule
+  ],
   declarations: [ProductCardComponent, ProductQuantityComponent],
-  exports: [ProductCardComponent, ProductQuantityComponent],
+  exports: [
+    ProductCardComponent,
+    ProductQuantityComponent,
+    CommonModule,
+    FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressBarModule
+  ],
   providers: [
     AuthService,
     AuthGuard,

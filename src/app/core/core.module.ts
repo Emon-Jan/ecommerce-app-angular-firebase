@@ -1,25 +1,20 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatListModule, MatProgressBarModule } from '@angular/material';
-import { RouterModule } from '@angular/router';
-import { SharedModule } from 'shared/shared.module';
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { SharedModule } from "shared/shared.module";
 
-import { FooterComponent } from './components/footer/footer.component';
-import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProductsComponent } from './components/products/products.component';
+import { FooterComponent } from "./components/footer/footer.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { HomeComponent } from "./components/home/home.component";
+import { LoginComponent } from "./components/login/login.component";
+import { ProductsComponent } from "./components/products/products.component";
 
 @NgModule({
   imports: [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule,
-    MatListModule,
-    MatProgressBarModule,
     SharedModule,
     RouterModule.forChild([
       { path: "home", component: HomeComponent },
       { path: "products", component: ProductsComponent },
+      { path: "login", component: LoginComponent }
     ])
   ],
   exports: [HeaderComponent, FooterComponent],
@@ -27,7 +22,7 @@ import { ProductsComponent } from './components/products/products.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ProductsComponent,
+    ProductsComponent
   ]
 })
-export class CoreModule { }
+export class CoreModule {}

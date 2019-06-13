@@ -1,6 +1,6 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { AuthGuard } from "shared/service/auth-guard.service";
 
 import {
   AdminOrdersComponent,
@@ -8,38 +8,12 @@ import {
 } from "./components/admin-orders/admin-orders.component";
 import { AdminProductsComponent } from "./components/admin-products/admin-products.component";
 import { ProductFormComponent } from "./components/admin-products/product-form/product-form.component";
-import {
-  MatDividerModule
-} from "@angular/material/divider";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatTableModule } from "@angular/material/table";
-import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatSortModule, } from "@angular/material/sort";
-import { MatSelectModule } from "@angular/material/select";
-import { MatDialogModule, } from "@angular/material/dialog";
-import { MatIconModule, } from "@angular/material/icon";
-import { MatCardModule, } from "@angular/material/card";
-import { MatChipsModule, } from "@angular/material/chips";
-import { MatInputModule } from "@angular/material/input";
-import { RouterModule } from "@angular/router";
-import { AuthGuard } from "shared/service/auth-guard.service";
 import { AdminGuard } from "./services/admin-guard.service";
+import { SharedModule } from "shared/shared.module";
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatSelectModule,
-    MatDialogModule,
-    MatIconModule,
-    MatCardModule,
-    MatChipsModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: "admin-products/new",
@@ -71,4 +45,4 @@ import { AdminGuard } from "./services/admin-guard.service";
   ],
   entryComponents: [DialogOverviewAdminComponent]
 })
-export class AdminModule { }
+export class AdminModule {}

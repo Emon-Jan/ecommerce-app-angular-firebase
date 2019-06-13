@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatListModule, MatProgressBarModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'shared/shared.module';
 
@@ -15,12 +15,14 @@ import { ProductsComponent } from './components/products/products.component';
     MatButtonModule,
     MatCardModule,
     MatListModule,
+    MatProgressBarModule,
     SharedModule,
     RouterModule.forChild([
       { path: "home", component: HomeComponent },
       { path: "products", component: ProductsComponent },
     ])
   ],
+  exports: [HeaderComponent, FooterComponent],
   declarations: [
     HeaderComponent,
     FooterComponent,

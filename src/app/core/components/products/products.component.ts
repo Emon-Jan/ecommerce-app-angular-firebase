@@ -1,13 +1,11 @@
-import { CartService } from "shared/service/cart.service";
-import { Product } from "shared/model/product.model";
-import { ActivatedRoute } from "@angular/router";
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CartService } from 'shared/service/cart.service';
+import { CategoryService } from 'shared/service/category.service';
+import { ProductService } from 'shared/service/product.service';
 
 // tslint:disable-next-line:import-blacklist
-import { Subscription } from "rxjs";
-import { CategoryService } from "shared/service/category.service";
-import { ProductService } from "shared/service/product.service";
-
 @Component({
   selector: "app-products",
   templateUrl: "./products.component.html",
@@ -59,8 +57,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   filter(query: string) {
     this.filteredProducts = query
       ? this.products.filter(
-          items => items.payload.val().category === this.category
-        )
+        items => items.payload.val().category === this.category
+      )
       : this.products;
   }
 

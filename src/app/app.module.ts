@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
@@ -30,9 +29,6 @@ import { ShoppingModule } from './shopping/shopping.module';
     AdminModule,
     ShoppingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

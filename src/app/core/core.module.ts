@@ -1,13 +1,25 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
+import { NgModule } from '@angular/core';
+import { MatButtonModule, MatCardModule, MatListModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from 'shared/shared.module';
+
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    MatListModule,
+    SharedModule,
+    RouterModule.forChild([
+      { path: "home", component: HomeComponent },
+      { path: "products", component: ProductsComponent },
+    ])
   ],
   declarations: [
     HeaderComponent,

@@ -18,7 +18,8 @@ import {
   MatDialogModule,
   MatIconModule,
   MatCardModule,
-  MatChipsModule
+  MatChipsModule,
+  MatInputModule
 } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { AuthGuard } from "shared/service/auth-guard.service";
@@ -30,6 +31,7 @@ import { AdminGuard } from "./services/admin-guard.service";
     FormsModule,
     MatDividerModule,
     MatFormFieldModule,
+    MatInputModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -69,4 +71,4 @@ import { AdminGuard } from "./services/admin-guard.service";
   ],
   entryComponents: [DialogOverviewAdminComponent]
 })
-export class AdminModule {}
+export class AdminModule { }

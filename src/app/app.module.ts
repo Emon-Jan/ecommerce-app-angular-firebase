@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { LoginComponent } from './login/login.component';
 import { ShoppingModule } from './shopping/shopping.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ShoppingModule } from './shopping/shopping.module';
     SharedModule,
     AdminModule,
     ShoppingModule,
+    MatCardModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,

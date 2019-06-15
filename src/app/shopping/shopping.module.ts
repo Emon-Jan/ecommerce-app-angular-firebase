@@ -9,6 +9,7 @@ import {
   MyOrdersComponent
 } from "./components/my-orders/my-orders.component";
 import { OrderSuccessComponent } from "./components/order-success/order-success.component";
+import { ProductsComponent } from "./components/products/products.component";
 import { ShoppingCartComponent } from "./components/shopping-cart/shopping-cart.component";
 import { ShoppingcartDetailComponent } from "./components/shoppingcart-detail/shoppingcart-detail.component";
 
@@ -16,6 +17,7 @@ import { ShoppingcartDetailComponent } from "./components/shoppingcart-detail/sh
   imports: [
     SharedModule,
     RouterModule.forChild([
+      { path: "products", component: ProductsComponent },
       { path: "shopping-cart", component: ShoppingCartComponent },
       {
         path: "myorders",
@@ -35,6 +37,7 @@ import { ShoppingcartDetailComponent } from "./components/shoppingcart-detail/sh
     ])
   ],
   declarations: [
+    ProductsComponent,
     ShoppingCartComponent,
     CheckOutComponent,
     OrderSuccessComponent,

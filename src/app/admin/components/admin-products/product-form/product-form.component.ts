@@ -12,7 +12,7 @@ import { ProductService } from "shared/service/product.service";
   styleUrls: ["./product-form.component.css"]
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
-  id;
+  id: string;
   isDelete = false;
   product: any = {};
   categories: any = [];
@@ -62,13 +62,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         this.productService
           .removeProductFromFirebase(this.id)
           .then(res => {
-            console.log(res);
             this.router.navigate(["/admin-products"]);
           })
           .catch(err => console.log(err));
       }
     } else {
-      this.router.navigate(["/admin-products"]);
+      this.router.navigate(["/admin-products"], { relativeTo: this.route });
     }
   }
 

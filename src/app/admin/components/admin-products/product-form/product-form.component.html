@@ -95,7 +95,11 @@
           </i>
           Save
         </button>
-        <button class="btn btn-sm btn-outline-danger" (click)="delete()">
+        <button
+          class="btn btn-sm btn-outline-danger"
+          type="button"
+          (click)="delete()"
+        >
           <i class="material-icons">
             delete_forever
           </i>
@@ -103,6 +107,7 @@
         </button>
         <button
           class="btn btn-sm btn-light"
+          type="button"
           (click)="goBack()"
           *ngIf="isDelete"
         >
@@ -123,9 +128,10 @@
         mat-card-image
         class="cover rounded-top mb-0"
         [src]="imageUrl.value"
+        [alt]="title.value"
         *ngIf="product.imageUrl"
       />
-      <mat-card-footer class="card-footer">
+      <mat-card-footer class="card-footer" *ngIf="product">
         <mat-card-title>{{ product.title }}</mat-card-title>
         <mat-chip-list>
           <mat-chip>

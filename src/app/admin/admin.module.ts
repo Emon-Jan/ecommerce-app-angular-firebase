@@ -1,20 +1,23 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { AuthGuard } from "shared/service/auth-guard.service";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AuthGuard } from 'shared/service/auth-guard.service';
+import { SharedModule } from 'shared/shared.module';
 
-import {
-  AdminOrdersComponent,
-  DialogOverviewAdminComponent
-} from "./components/admin-orders/admin-orders.component";
-import { AdminProductsComponent } from "./components/admin-products/admin-products.component";
-import { ProductFormComponent } from "./components/admin-products/product-form/product-form.component";
-import { AdminGuard } from "./services/admin-guard.service";
-import { SharedModule } from "shared/shared.module";
+import { AdminOrderDetailComponent } from './components/admin-order-detail/admin-order-detail.component';
+import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './components/admin-products/admin-products.component';
+import { ProductFormComponent } from './components/admin-products/product-form/product-form.component';
+import { AdminGuard } from './services/admin-guard.service';
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
+      {
+        path: "admin-products",
+        component: AdminProductsComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
       {
         path: "admin-products/new",
         component: ProductFormComponent,
@@ -26,13 +29,13 @@ import { SharedModule } from "shared/shared.module";
         canActivate: [AuthGuard, AdminGuard]
       },
       {
-        path: "admin-products",
-        component: AdminProductsComponent,
+        path: "admin-orders",
+        component: AdminOrdersComponent,
         canActivate: [AuthGuard, AdminGuard]
       },
       {
-        path: "admin-orders",
-        component: AdminOrdersComponent,
+        path: "admin-orders/details/:orderId",
+        component: AdminOrderDetailComponent,
         canActivate: [AuthGuard, AdminGuard]
       }
     ])
@@ -41,8 +44,7 @@ import { SharedModule } from "shared/shared.module";
     AdminProductsComponent,
     AdminOrdersComponent,
     ProductFormComponent,
-    DialogOverviewAdminComponent
-  ],
-  entryComponents: [DialogOverviewAdminComponent]
+    AdminOrderDetailComponent
+  ]
 })
-export class AdminModule {}
+export class AdminModule { }

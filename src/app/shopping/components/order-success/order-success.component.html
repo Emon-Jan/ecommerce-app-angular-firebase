@@ -1,3 +1,47 @@
-<p>
-  order-success works!
-</p>
+<ng-container *ngIf="order">
+  <div class="row">
+    <div class="col-md-4">
+      <mat-card-title>
+        <h5 class="text-dark">
+          Order Successfully Placed
+        </h5>
+      </mat-card-title>
+      <mat-divider class="bg-warning mt-3 mb-3"></mat-divider>
+      <mat-card-content>
+        You have placed order on <h6>{{ order.dateTime | date:'shortDate'}} </h6>
+        Name:<h6>{{ order.sippingInfo.fullname | uppercase}}</h6>
+        Phone:<h6>{{ order.sippingInfo.phonenum }}</h6>
+        Shipping Address: <h6>{{ order.sippingInfo.fulladdress | uppercase}}</h6>
+        <p>You will be delivered soon.</p>
+      </mat-card-content>
+    </div>
+    <mat-divider [vertical]="true"> </mat-divider>
+    <div class="col-md-7">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Info.</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of order.items; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.product.title }} X {{ item.quantity }}</td>
+            <td>{{ item.totalPrice | currency: "BDT":"symbol-narrow" }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Total</th>
+            <th></th>
+            <th>
+              {{ order.grossPrice | currency: "BDT":"symbol-narrow" }}
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</ng-container>

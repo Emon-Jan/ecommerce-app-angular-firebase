@@ -1,18 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" routerLink="/home" style="font-family: Righteous;">
+    <a class="navbar-brand" routerLink="/home">
       <i class="material-icons">home</i>
       e-commerce
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -47,19 +40,12 @@
           </a>
         </li>
         <li class="nav-item dropdown float-right" *ngIf="guestUser">
-          <a
-            class="nav-link dropdown-toggle"
-            style="cursor: pointer;"
-            id="dropdown01"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <a class="nav-link dropdown-toggle" style="cursor: pointer;" id="dropdown01" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <i class="material-icons text-primary">
               account_circle
             </i>
-            {{ guestUser.userName }}</a
-          >
+            {{ guestUser.userName }}</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" routerLink="/myorders">
               <i class="material-icons">
@@ -81,11 +67,7 @@
                 Manage Products
               </a>
             </ng-container>
-            <a
-              class="dropdown-item"
-              style="cursor: pointer;"
-              (click)="onLogout()"
-            >
+            <a class="dropdown-item" style="cursor: pointer;" (click)="onLogout()">
               <i class="material-icons text-danger">
                 power_settings_new
               </i>

@@ -23,7 +23,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private productService: ProductService,
     private categoryService: CategoryService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
@@ -48,7 +48,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     if (this.id) {
       this.productService
         .updateProductOnFirebase(this.id, product)
-        .then(res => console.log(res))
+        .then()
         .catch(err => console.log(err));
     } else {
       this.productService.createProductOnFirebase(product);

@@ -31,16 +31,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .getCategories()
       .subscribe(res => {
         this.categories = res;
-        // console.log(
-        //   this.categories[0].key + " " + this.categories[0].payload.val().name
-        // );
       });
 
     this.prodSubscription = this.productService
       .getProductsFromFirebase()
       .subscribe(res => {
         this.products = res;
-
         this.route.queryParamMap.subscribe(params => {
           this.category = params.get("category");
           this.filter(this.category);

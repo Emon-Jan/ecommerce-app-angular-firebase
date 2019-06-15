@@ -14,16 +14,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of order">
-        <td>{{ item.sippingInfo.fullname }}</td>
-        <td>{{ item.sippingInfo.phonenum }}</td>
-        <td>{{ item.dateTime | date: "medium" }}</td>
-        <td>{{ item.grossPrice | currency: "BDT":"symbol-narrow" }}</td>
+      <tr *ngFor="let item of order; let i=index">
+        <td>{{ item.payload.val().sippingInfo.fullname | uppercase }}</td>
+        <td>{{ item.payload.val().sippingInfo.phonenum }}</td>
+        <td>{{ item.payload.val().dateTime | date: "medium" }}</td>
+        <td>{{ item.payload.val().grossPrice | currency: "BDT":"symbol-narrow" }}</td>
         <td>
-          <button
-            class="btn btn-sm btn-outline-primary"
-            (click)="orderDetail(item)"
-          >
+          <button class="btn btn-sm btn-outline-primary" (click)="orderDetail(item.key)">
             <i class="material-icons">
               details
             </i>

@@ -1,0 +1,33 @@
+div.box-summary {
+  padding-left: 10px;
+  border-style: inset;
+  border-color: rgb(177, 187, 197);
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+div.box-center {
+  text-align: center;
+  display: inline-block;
+}
+
+.button-right {
+  position: sticky;
+}
+
+div > h4,
+div > h6 {
+  display: none;
+}
+
+@media print {
+  div > h4,
+  div > h6 {
+    display: block;
+  }
+
+  nav,
+  button {
+    display: none;
+  }
+}

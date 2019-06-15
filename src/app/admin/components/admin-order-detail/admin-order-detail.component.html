@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 box-center">
+    <h4>E-COMMERCE LTD.</h4>
+    <h6>e-commerce@gmail.com</h6>
+    <h6>+8801727272727</h6>
+    <mat-card-title>
+      <h2 class="text-dark">
+        Order Details
+      </h2>
+    </mat-card-title>
+    <mat-divider class="bg-warning mt-3 mb-3"></mat-divider>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-sm btn-light  button-right" (click)="printPage()">
+      <i class="material-icons">
+        print
+      </i>
+    </button>
+  </div>
+</div>
+<ng-container *ngIf="order">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="box-summary">
+        <mat-card-content>
+          Order Date:<h5>{{ order.dateTime | date:'medium'}} </h5>
+          Name:<h5>{{ order.sippingInfo.fullname | uppercase}}</h5>
+          Phone:<h5>{{ order.sippingInfo.phonenum }}</h5>
+          Shipping Address: <h5>{{ order.sippingInfo.fulladdress | uppercase}}</h5>
+        </mat-card-content>
+      </div>
+    </div>
+    <mat-divider [vertical]="true"> </mat-divider>
+    <div class="col-md-7">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Info.</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of order.items; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.product.title }} X {{ item.quantity }}</td>
+            <td>{{ item.totalPrice | currency: "BDT":"symbol-narrow" }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Total</th>
+            <th></th>
+            <th>
+              {{ order.grossPrice | currency: "BDT":"symbol-narrow" }}
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</ng-container>

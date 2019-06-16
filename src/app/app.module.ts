@@ -7,7 +7,7 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { SharedModule } from "shared/shared.module";
 
-import { environment } from "./../environments/environment.prod";
+import { environment } from "./../environments/environment";
 import { AdminModule } from "./admin/admin.module";
 import { AdminGuard } from "./admin/services/admin-guard.service";
 import { AppComponent } from "./app.component";
